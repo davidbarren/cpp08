@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:16:35 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/22 00:11:56 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/22 00:17:19 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	Span::shortestSpan() const
 {
 	if (m_vec.size() <= 1)
 		throw NoSpanException();
-	int min = *std::min_element(m_vec.begin(), m_vec.end());
-	// find second min then 2nd minus min
+	// shortest Span is not necessarily min2 - min, shorter span could be 
+	// in the middle
 	return 1;
 }
 
