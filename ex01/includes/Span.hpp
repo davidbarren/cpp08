@@ -6,13 +6,16 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:09:39 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/18 17:28:59 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/22 00:04:38 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SPAN_HPP
 #define SPAN_HPP
 #include <vector>
 #include <random>
+#include <algorithm>
+#include <ctime>
+
 class	Span
 {
 	private:
@@ -24,7 +27,7 @@ class	Span
 		Span(const Span& other);
 		Span& operator=(const Span& other);
 		~Span();
-		void	addNumber();
+		void	addNumber(int num);
 		int		shortestSpan() const;
 		int		longestSpan() const;
 		void	populateSpan();

@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:16:35 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/18 17:27:47 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/22 00:11:56 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,31 @@ Span::~Span()
 {
 }
 
-void	Span::addNumber()
+void	Span::addNumber(int num)
 {
-	// throw exception when it is  too full
+	if (m_vec.size() + 1 > (size_t) m_size)
+		throw NoSpaceException();
+	m_vec.push_back(num);
 }
 
 int	Span::shortestSpan() const
 {
-	// use algorithm
+	if (m_vec.size() <= 1)
+		throw NoSpanException();
+	int min = *std::min_element(m_vec.begin(), m_vec.end());
+	// find second min then 2nd minus min
+	return 1;
 }
 
 int	Span::longestSpan() const
 {
-// use algorithm
+	if (m_vec.size() <= 1)
+		throw NoSpanException();
+	int max = *std::max_element(m_vec.begin(), m_vec.end());
+	int min = *std::min_element(m_vec.begin(), m_vec.end());
+	if (max == min)
+		throw NoSpanException();
+	return max - min;
 }
 
 void	Span::populateSpan()
