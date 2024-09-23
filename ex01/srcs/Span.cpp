@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:16:35 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/23 15:48:39 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:49:21 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	Span::longestSpan() const
 
 void	Span::populateSpan(std::vector<int>::iterator fill_from, std::vector<int>::iterator end)
 {
-	auto range = end - fill_from;
+	size_t range = end - fill_from;
 	if (range + m_vec.size() > m_size)
 		throw NoSpaceException();
 	m_vec.insert(m_vec.end(),fill_from, end);

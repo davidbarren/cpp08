@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:09:39 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/23 15:41:37 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:35:39 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SPAN_HPP
@@ -29,7 +29,7 @@ class	Span
 		Span& operator=(const Span& other);
 		~Span();
 		void	addNumber(int num);
-		int		shortestSpan();
+		int		shortestSpan() ;
 		int		longestSpan() const;
 		void	populateSpan(std::vector<int>::iterator fill_from, std::vector<int>::iterator end);
 		void	printSpan() const;
