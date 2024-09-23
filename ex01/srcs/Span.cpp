@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:16:35 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/22 00:17:19 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:48:39 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Span::Span(unsigned int N) : m_size(N)
 {
-	 m_vec.reserve(N);
 }
 
 Span::Span(const Span& other): m_size(other.m_size), m_vec(other.m_vec)
@@ -39,13 +38,22 @@ void	Span::addNumber(int num)
 	m_vec.push_back(num);
 }
 
-int	Span::shortestSpan() const
+int	Span::shortestSpan()
 {
+	int	min_span = 0;
+
 	if (m_vec.size() <= 1)
 		throw NoSpanException();
-	// shortest Span is not necessarily min2 - min, shorter span could be 
-	// in the middle
-	return 1;
+	std::sort(m_vec.begin(), m_vec.end());
+	for (std::vector<int>::iterator i = m_vec.begin(); i < m_vec.end() - 1; i++)
+	{
+		auto cur_span = *(i + 1) - *i;
+		if (!min_span || cur_span < min_span)
+			min_span = cur_span;
+	}
+	if (!min_span)
+		throw NoSpanException();
+	return min_span;
 }
 
 int	Span::longestSpan() const
@@ -59,9 +67,19 @@ int	Span::longestSpan() const
 	return max - min;
 }
 
-void	Span::populateSpan()
+void	Span::populateSpan(std::vector<int>::iterator fill_from, std::vector<int>::iterator end)
 {
-// use algorithm to fill container with pseudorandom values
+	auto range = end - fill_from;
+	if (range + m_vec.size() > m_size)
+		throw NoSpaceException();
+	m_vec.insert(m_vec.end(),fill_from, end);
+}
+
+void	Span::printSpan() const
+{
+	std::cout << "printing the Span contents" << std::endl;
+	for (auto const& iter : m_vec)
+		std::cout << iter << std::endl;
 }
 
 const char *Span::NoSpanException::what() const noexcept

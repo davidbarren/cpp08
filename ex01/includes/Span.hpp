@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:09:39 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/22 00:04:38 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:41:37 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SPAN_HPP
@@ -15,12 +15,13 @@
 #include <random>
 #include <algorithm>
 #include <ctime>
+#include <iostream>
 
 class	Span
 {
 	private:
 		Span();
-		int	m_size;
+		unsigned int	m_size;
 		std::vector<int> m_vec;
 	public:
 		Span(unsigned int N);
@@ -28,9 +29,10 @@ class	Span
 		Span& operator=(const Span& other);
 		~Span();
 		void	addNumber(int num);
-		int		shortestSpan() const;
+		int		shortestSpan();
 		int		longestSpan() const;
-		void	populateSpan();
+		void	populateSpan(std::vector<int>::iterator fill_from, std::vector<int>::iterator end);
+		void	printSpan() const;
 		class NoSpanException : public std::exception
 		{
 			const char* what() const noexcept;
