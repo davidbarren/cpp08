@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:55:49 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/24 11:38:34 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:25:30 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef MUTANTSTACK_HPP

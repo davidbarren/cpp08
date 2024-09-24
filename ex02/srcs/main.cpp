@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:55:14 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/24 11:39:35 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:57:01 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <iostream>
@@ -14,6 +14,20 @@
 #include <list>
 int	main(void)
 {
+	{
+		MutantStack<int> mstack;
+		std::cout << "Testing basic stack functionality in mstack --------" << std::endl;
+		std::cout << "Return of mstack.empty with no elements: " << mstack.empty() << std::endl;
+		mstack.push(3);
+		std::cout << "Top of stack after 3 is pushed: " << mstack.top() << std::endl;
+		mstack.push(7);
+		std::cout << "Top of stack after 7 is pushed: " << mstack.top() << std::endl;
+		std::cout << "Size of stack with 2 elements inside: " << mstack.size() << std::endl;
+		mstack.pop();
+		std::cout << "Size of stack after popping one element: " << mstack.size() << std::endl;
+		std::cout << "Return of mstack.empty with one element: " << mstack.empty() << std::endl;
+	}
+	
 	{
 		std::cout << "Testing mstack iterator functionality --------- " << std::endl;
 		MutantStack<int> mstack;
@@ -202,6 +216,25 @@ int	main(void)
 		{
 			std::cout << *rit << std::endl;
 			++rit;
+		}
+		std::cout << "Instantiating const MutantStack with Copy Constructor----" << std::endl;
+		const MutantStack<int> conststack(mstack);
+
+		MutantStack<int>::const_iterator cit = conststack.cbegin();
+		MutantStack<int>::const_iterator cite = conststack.cend();
+		std::cout << "Forward const iterator -------------" << std::endl;
+		while (cit != cite)
+		{
+			std::cout << *cit << std::endl;
+			++cit;
+		}
+		std::cout << "Reverse const iterator -------------" << std::endl;
+		MutantStack<int>::const_reverse_iterator crit = conststack.crbegin();
+		MutantStack<int>::const_reverse_iterator crite = conststack.crend();
+		while (crit != crite)
+		{
+			std::cout << *crit << std::endl;
+			++crit;
 		}
 	}
 }
