@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:55:49 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/23 22:27:05 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:38:34 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef MUTANTSTACK_HPP
@@ -21,8 +21,14 @@ class MutantStack : public std::stack<T, Container>
 		}
 		~MutantStack(){
 		}
-		MutantStack(const MutantStack& other);
-		MutantStack& operator=(const MutantStack& other);
+		MutantStack(const MutantStack<T>& other) : std::stack<T, Container>(other)
+		{
+		}
+		MutantStack& operator=(const MutantStack<T>& other){
+			if (this != &other)
+				std::stack<T, Container>::operator = (other);
+			return *this;
+		}
 		typedef typename Container::iterator iterator;
 		typedef typename Container::const_iterator const_iterator;
 		typedef typename Container::reverse_iterator reverse_iterator;
@@ -43,7 +49,6 @@ class MutantStack : public std::stack<T, Container>
 		{
 			return this->c.cend();
 		}
-
 		reverse_iterator	rbegin()
 		{
 			return this->c.rbegin();

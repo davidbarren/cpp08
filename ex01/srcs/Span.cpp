@@ -6,7 +6,7 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:16:35 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/23 16:49:21 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:42:48 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ Span::Span(const Span& other): m_size(other.m_size), m_vec(other.m_vec)
 
 Span& Span::operator=(const Span& other)
 {
-	m_size = other.m_size;
-	m_vec = other.m_vec;
+	if (this != &other)
+	{
+		m_size = other.m_size;
+		m_vec = other.m_vec;
+	}
 	return *this;
 }
 
