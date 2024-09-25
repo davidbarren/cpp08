@@ -6,19 +6,22 @@
 /*   By: dbarrene <dbarrene@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:55:14 by dbarrene          #+#    #+#             */
-/*   Updated: 2024/09/24 11:57:01 by dbarrene         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:28:32 by dbarrene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <iostream>
 #include "MutantStack.hpp"
 #include <list>
+#include <assert.h>
 int	main(void)
 {
 	{
+		int rotta __attribute__ ((unused)); // funny compiler moment
 		MutantStack<int> mstack;
 		std::cout << "Testing basic stack functionality in mstack --------" << std::endl;
 		std::cout << "Return of mstack.empty with no elements: " << mstack.empty() << std::endl;
 		mstack.push(3);
+		assert(mstack.top() == 3);
 		std::cout << "Top of stack after 3 is pushed: " << mstack.top() << std::endl;
 		mstack.push(7);
 		std::cout << "Top of stack after 7 is pushed: " << mstack.top() << std::endl;
